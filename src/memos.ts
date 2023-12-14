@@ -15,16 +15,6 @@ export class Memos extends ItemView {
   constructor(leaf: WorkspaceLeaf, plugin: MemosPlugin) {
     super(leaf);
     this.plugin = plugin;
-
-    // this.plugin.settings = null;
-    // 	plugin.settings.subscribe((val:any) => {
-    // 	this.plugin.settings = val;
-
-    // 	// Refresh the calendar if settings change
-    // 	if (this.memosComponent) {
-    // 		useRefresh();
-    // 	}
-    // 	});
   }
 
   getDisplayText(): string {
@@ -55,7 +45,6 @@ export class Memos extends ItemView {
 
   private async onFileModified(file: TFile): Promise<void> {
     const date = getDateFromFile(file, 'day');
-
     console.log('debounce');
     if (globalStateService.getState().changedByMemos) {
       globalStateService.setChangedByMemos(false);
